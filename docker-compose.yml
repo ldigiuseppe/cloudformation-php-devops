@@ -6,10 +6,10 @@ services:
     build:
       context: .docker
       dockerfile: php.Dockerfile
-    #image??
     container_name: ${APP_NAME:?err}-php
     volumes:
       - '.:/var/www/html'
+      - '.docker/config/php/php.ini:/usr/local/etc/php/conf.d/php.ini'
     depends_on:
       - mysql
 
@@ -29,13 +29,13 @@ services:
     image: mysql:5.7
     container_name: ${APP_NAME:?err}-mysql
     volumes:
-      - ${APP_NAME:?err}-mysqldata:/var/lib/mysql
+      - mysqldata:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?err}
-      MYSQL_DATABASE: ${MYSQL_DATABASE?err}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:?err}
+      MYSQL_DATABASE: ${DB_DATABASE?err}
 
 volumes:
-  ${APP_NAME:?err}-mysqldata:
+  mysqldata:
     driver: 'local'
 
