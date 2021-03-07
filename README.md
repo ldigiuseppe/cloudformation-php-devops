@@ -29,3 +29,6 @@ Create the containers:
 ```docker-compose up -d```
 
 Go to http://localhost
+
+You can execute artisan commands the followin way:
+```docker-compose exec php php artisan migrate```
