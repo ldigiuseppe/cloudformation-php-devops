@@ -30,6 +30,8 @@ services:
     container_name: ${APP_NAME:?err}-mysql
     volumes:
       - mysqldata:/var/lib/mysql
+    ports:
+      - 3306:3306
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:?err}
