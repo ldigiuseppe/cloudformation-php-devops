@@ -35,11 +35,9 @@ You can execute artisan commands the following way:
 
 ## AWS CloudFormation Stack
 
-To create the cloud formation stack the following should be executed:
+Configure `.aws/config` environments and execute
+```
+bash ./create_stack.sh
+```
 
-```
-aws cloudformation create-stack --template-body file://$PWD/.aws/CloudFormation/vpc.yml --stack-name vpc-myapp
-aws cloudformation create-stack --template-body file://$PWD/.aws/cloud-formation/iam.yml --stack-name iam-myapp-test --capabilities CAPABILITY_IAM
-aws cloudformation create-stack --template-body file://$PWD/.aws/cloud-formation/cluster.yml --stack-name cluster-myapp-test
-aws cloudformation create-stack --template-body file://$PWD/.aws/cloud-formation/task.yml --stack-name task-myapp-test
-```
+jq is needed for the script to work
