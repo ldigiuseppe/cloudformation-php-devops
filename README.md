@@ -1,7 +1,7 @@
-# Docker Compose Laravel LEMP Stack
+# Docker Compose Laravel LEMP Stack & AWS ECS Cluster
 
 In this repository you will find a docker-compose file with a LEMP stack to start with Laravel as a Framework.
-This repository contains a little `docker-compose` configuration to start a `LEMP (Linux, Nginx, MariaDB, PHP)` stack.
+This repository contains a little `docker-compose` configuration to start a `LEMP (Linux, Nginx, MariaDB, PHP)` stack locally.
 
 ## Details
 
@@ -30,5 +30,16 @@ Create the containers:
 
 Go to http://localhost
 
-You can execute artisan commands the followin way:
+You can execute artisan commands the following way:
 ```docker-compose exec php php artisan migrate```
+
+## AWS CloudFormation Stack
+
+To create the cloud formation stack the following should be executed:
+
+```
+aws cloudformation create-stack --template-body file://$PWD/.aws/CloudFormation/vpc.yml --stack-name vpc-myapp
+aws cloudformation create-stack --template-body file://$PWD/.aws/cloud-formation/iam.yml --stack-name iam-myapp-test --capabilities CAPABILITY_IAM
+aws cloudformation create-stack --template-body file://$PWD/.aws/cloud-formation/cluster.yml --stack-name cluster-myapp-test
+aws cloudformation create-stack --template-body file://$PWD/.aws/cloud-formation/task.yml --stack-name task-myapp-test
+```
