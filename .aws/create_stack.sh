@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-
 # Replace config variables in template
 source config
 
@@ -16,7 +14,6 @@ sed -i "s/{environment}/$environment/" cloud-formation/temp-task.yml
 stack_name="$app_name"-"$environment"
 
 # debug
-set -x
 echo "crating VPC"
 vpc_stack_id=$( aws cloudformation create-stack --template-body file://$PWD/cloud-formation/vpc.yml --stack-name "vpc-${stack_name}" | jq -r '.StackId' ) 
 aws cloudformation wait stack-create-complete --stack-name $vpc_stack_id
@@ -37,5 +34,3 @@ echo "all resources created"
 
 rm cloud-formation/temp-task.yml
 rm cloud-formation/temp-cluster.yml
-
-set +x
