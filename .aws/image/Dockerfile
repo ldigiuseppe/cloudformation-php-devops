@@ -70,6 +70,7 @@ COPY .aws/image/config/nginx/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 COPY .aws/image/config/nginx/settings.conf /etc/nginx/snippets/settings.conf
 COPY .aws/image/config/nginx/default.conf /etc/nginx/sites-available/default
 COPY .aws/image/config/php/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
+COPY .aws/image/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Make sure app setting are available in App
 RUN sed -i 's/;clear_env = no/clear_env = no/g' /etc/php/7.4/fpm/pool.d/www.conf
