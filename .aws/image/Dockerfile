@@ -12,12 +12,14 @@ ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN apt-get update
+
 # Nginx, vim, supervisor, wget
 RUN apt-get install -y  \
 	nginx  \
 	vim \
-	wget \
-	supervisor
+	supervisor \
+	wget
 
 # Usefull stuff
 RUN apt-get install -y software-properties-common
