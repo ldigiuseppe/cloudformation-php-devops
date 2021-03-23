@@ -16,7 +16,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get install -y  \
 	nginx  \
 	vim \
-	wget
+	wget \
+	supervisor
 
 # Usefull stuff
 RUN apt-get install -y software-properties-common
