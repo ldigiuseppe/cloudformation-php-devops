@@ -91,3 +91,5 @@ RUN chmod 755 /opt/startup/init_container.sh
 EXPOSE 80 443
 
 WORKDIR /var/www/html
+
+ENTRYPOINT ["/opt/startup/init_container.sh"]
