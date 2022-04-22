@@ -1,6 +1,7 @@
 {
     "require": {
-        "laravel/laravel": "^8.5"
+        "laravel/laravel": "^8.5",
+        "fideloper/proxy": "^4.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
